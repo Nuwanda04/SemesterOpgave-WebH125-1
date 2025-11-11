@@ -1,21 +1,20 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
-  Toolbar,
-  IconButton,
-  Typography,
+  Button,
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
-  Divider,
-  Button,
+  Toolbar,
+  Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = [
@@ -89,7 +88,7 @@ const Navigation = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      {/* Floating burger button for mobile */}
+      {/* Flydende burgerknap til mobil */}
       <IconButton
         onClick={handleDrawerToggle}
         sx={{
@@ -209,7 +208,7 @@ const Navigation = () => {
         </Drawer>
       </nav>
       <Box component="main" sx={{ width: "100%", pt: { xs: 0, sm: "64px" } }}>
-        {/* Content will be rendered here by React Router */}
+        {/* Indhold vises her af React Router */}
       </Box>
     </Box>
   );

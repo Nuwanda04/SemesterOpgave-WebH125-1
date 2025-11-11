@@ -61,7 +61,7 @@ const ActivityCard = ({
           width: "388px",
         }}
       >
-        {/* Image */}
+        {/* Billede */}
         <Box
           component={motion.div}
           whileHover={{ scale: 1.02 }}
@@ -85,7 +85,7 @@ const ActivityCard = ({
           />
         </Box>
 
-        {/* Tan curved box with title */}
+        {/* Sandfarvet titelboks */}
         <Box
           className="curved-border"
           sx={{
@@ -120,7 +120,7 @@ const ActivityCard = ({
           </Typography>
         </Box>
 
-        {/* Dark teal info container */}
+        {/* Mørk teal infoboks */}
         <Box
           className="curved-border"
           sx={{
@@ -133,7 +133,7 @@ const ActivityCard = ({
             padding: "27px 34px 20px 34px",
           }}
         >
-          {/* Time and action button */}
+          {/* Tid og handling */}
           <Box
             sx={{
               display: "flex",
@@ -184,7 +184,7 @@ const ActivityCard = ({
             </Box>
           </Box>
 
-          {/* Accordion or description */}
+          {/* Accordion eller beskrivelse */}
           {showAccordion ? (
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <Accordion

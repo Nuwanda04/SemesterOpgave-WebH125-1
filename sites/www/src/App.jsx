@@ -14,18 +14,18 @@ import "./App.css";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#5a8a8f", // Primary blue
-      dark: "#33626C", // Dark teal
+      main: "#5a8a8f", // Primær blå nuance
+      dark: "#33626C", // Mørk teal
     },
     secondary: {
-      main: "#8fa9a3", // Sage green
+      main: "#8fa9a3", // Salviegrøn
     },
     background: {
-      default: "#e8e5dc", // Beige background
+      default: "#e8e5dc", // Beige baggrund
       paper: "#ffffff",
     },
     warning: {
-      main: "#c9b896", // Tan/gold (using warning slot for tan color)
+      main: "#c9b896", // Tan/guld (bruger warning-slot)
     },
   },
   typography: {
@@ -60,7 +60,7 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 0, // Set default to 0 so our custom class works
+    borderRadius: 0, // Standard 0 så vores egne hjørner virker
   },
   components: {
     MuiButton: {

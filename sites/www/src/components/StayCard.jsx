@@ -1,5 +1,4 @@
-import React from "react";
-import { Box, Typography, Button, CardMedia } from "@mui/material";
+import { Box, Button, CardMedia, Typography } from "@mui/material";
 
 const StayCard = ({ stay, onReadMore }) => {
   return (
@@ -9,7 +8,7 @@ const StayCard = ({ stay, onReadMore }) => {
         paddingBottom: "140px",
       }}
     >
-      {/* Image */}
+      {/* Billede */}
       <Box
         sx={{
           position: "relative",
@@ -30,7 +29,7 @@ const StayCard = ({ stay, onReadMore }) => {
         />
       </Box>
 
-      {/* Tan curved box with stay details */}
+      {/* Sandfarvet boks med opholdsinfo */}
       <Box
         className="curved-border"
         sx={{
@@ -88,7 +87,7 @@ const StayCard = ({ stay, onReadMore }) => {
         </Typography>
       </Box>
 
-      {/* Sage button */}
+      {/* Salviegrøn knap */}
       <Box
         sx={{
           position: "absolute",

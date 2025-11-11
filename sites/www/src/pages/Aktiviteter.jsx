@@ -17,7 +17,7 @@ const Aktiviteter = () => {
       try {
         const response = await fetch("http://localhost:3042/activities");
         const data = await response.json();
-        // Backend returns { activities: [...] } or { data: [...] }
+        // Backend returnerer { activities: [...] } eller { data: [...] }
         const activitiesArray = data.activities || data.data || data;
         setActivities(Array.isArray(activitiesArray) ? activitiesArray : []);
         setLoading(false);
@@ -30,7 +30,7 @@ const Aktiviteter = () => {
 
     fetchActivities();
 
-    // Load liked activities from localStorage
+    // Hent favoritter fra localStorage
     const savedLikes = localStorage.getItem("likedActivities");
     if (savedLikes) {
       setLikedActivities(JSON.parse(savedLikes));
@@ -42,13 +42,13 @@ const Aktiviteter = () => {
     let updatedLikes;
 
     if (isLiked) {
-      // Remove from likes
+      // Fjern fra favoritter
       updatedLikes = likedActivities.filter(
         (item) => item._id !== activity._id
       );
       toast.info(`${activity.title} fjernet fra dine favoritter`);
     } else {
-      // Add to likes
+      // Tilføj til favoritter
       updatedLikes = [...likedActivities, activity];
       toast.success(`${activity.title} gemt under favoritter`);
     }

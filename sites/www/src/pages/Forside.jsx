@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Container,
-  Stack,
-  IconButton,
-  Paper,
-  Grid,
-} from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 const Forside = () => {
@@ -38,7 +38,7 @@ const Forside = () => {
 
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#e8e5dc" }}>
-      {/* Hero Image Section */}
+      {/* Hero-billedsektion */}
       <Box
         sx={{
           position: "relative",
@@ -63,7 +63,7 @@ const Forside = () => {
           },
         }}
       >
-        {/* Logo and Title */}
+        {/* Logo og titel */}
         <Box
           sx={{
             position: "relative",
@@ -108,7 +108,7 @@ const Forside = () => {
           </Typography>
         </Box>
 
-        {/* Book Nu Button */}
+        {/* "Book nu"-knap */}
         <Button
           variant="outlined"
           className="curved-border"
@@ -135,7 +135,7 @@ const Forside = () => {
         </Button>
       </Box>
 
-      {/* Blue Welcome Section */}
+      {/* Blå velkomstsektion */}
       <Box
         className="curved-border"
         sx={{
@@ -343,7 +343,7 @@ const Forside = () => {
         </Grid>
       </Box>
 
-      {/* Footer */}
+      {/* Sidefod */}
       <Box
         sx={{
           backgroundColor: "#2c4f54",

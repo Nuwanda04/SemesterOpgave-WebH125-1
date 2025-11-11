@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import LogoutIcon from "@mui/icons-material/Logout";
 import {
-  Box,
-  Typography,
-  Container,
-  Grid,
-  TextField,
-  Button,
   Alert,
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  IconButton,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  IconButton,
+  TextField,
+  Typography,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import ActivityCard from "../components/ActivityCard";
+import BlueInfoSection from "../components/BlueInfoSection";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
-import BlueInfoSection from "../components/BlueInfoSection";
-import ActivityCard from "../components/ActivityCard";
 
 const Profile = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  // Login state
+  // Login-tilstand
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -42,10 +42,10 @@ const Profile = () => {
   const [loginError, setLoginError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Favorites state
+  // Favorit-tilstand
   const [likedActivities, setLikedActivities] = useState([]);
 
-  // Admin state
+  // Admin-tilstand
   const [activities, setActivities] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogMode, setDialogMode] = useState("add");
@@ -62,7 +62,7 @@ const Profile = () => {
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    // Check if user is logged in
+    // Tjek om bruger er logget ind
     const token = localStorage.getItem("authToken");
     const userData = localStorage.getItem("userData");
 
@@ -76,7 +76,7 @@ const Profile = () => {
       }
     }
 
-    // Load liked activities
+    // Hent gemte aktiviteter
     const savedLikes = localStorage.getItem("likedActivities");
     if (savedLikes) {
       setLikedActivities(JSON.parse(savedLikes));
@@ -110,7 +110,7 @@ const Profile = () => {
         const token = data.data.token;
         localStorage.setItem("authToken", token);
 
-        // Decode JWT to get user data (simple decode, not verification)
+        // Afkod JWT for at hente brugerdata (uden validering)
         const tokenParts = token.split(".");
         const payload = JSON.parse(atob(tokenParts[1]));
         localStorage.setItem("userData", JSON.stringify(payload));
@@ -141,11 +141,12 @@ const Profile = () => {
   };
 
   const handleRemoveFavorite = (activityId) => {
+    // Fjern aktivitet fra favoritter
     const removedActivity = likedActivities.find(
       (activity) => activity._id === activityId
     );
     const updatedLikes = likedActivities.filter(
-      (activity) => activity._id !== activityId
+      (item) => item._id !== activityId
     );
     setLikedActivities(updatedLikes);
     localStorage.setItem("likedActivities", JSON.stringify(updatedLikes));
@@ -154,7 +155,7 @@ const Profile = () => {
     }
   };
 
-  // Admin functions
+  // Admin-funktioner
   const fetchActivities = async () => {
     try {
       const response = await fetch("http://localhost:3042/activities");
@@ -376,7 +377,7 @@ const Profile = () => {
       >
         <Container maxWidth="xl">
           {!isLoggedIn ? (
-            // Login Form
+            // Loginformular
             <Container maxWidth="sm">
               <Box
                 component="form"
@@ -450,9 +451,9 @@ const Profile = () => {
               </Box>
             </Container>
           ) : (
-            // Logged in content
+            // Indhold for indloggede
             <>
-              {/* Favorites Content - shown for guests only */}
+              {/* Favoritsektion - kun for gæster */}
               {!isAdmin && (
                 <>
                   {likedActivities.length === 0 ? (
@@ -491,7 +492,7 @@ const Profile = () => {
                 </>
               )}
 
-              {/* Admin Panel - shown for admins only */}
+              {/* Adminpanel - kun for admins */}
               {isAdmin && (
                 <>
                   {error && (
@@ -668,7 +669,7 @@ const Profile = () => {
         </Container>
       </Box>
 
-      {/* Add/Update Dialog */}
+      {/* Dialog til tilføjelse/opdatering */}
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
